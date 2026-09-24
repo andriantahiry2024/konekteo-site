@@ -2,8 +2,8 @@
 # Aucune étape de compilation : ce dépôt contient du HTML/CSS/JS déjà prêt.
 FROM nginx:alpine
 
-# Configuration de service : cache long, compression, en-têtes de sécurité
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+# Configuration nginx principale : cache par type, compression, en-têtes de sécurité
+COPY nginx.conf /etc/nginx/nginx.conf
 
 # Contenu public uniquement — jamais le Dockerfile, le README ni la configuration nginx
 COPY index.html favicon.svg manifest.webmanifest robots.txt sitemap.xml /usr/share/nginx/html/
