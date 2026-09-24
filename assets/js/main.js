@@ -281,6 +281,8 @@
       cx += (x - cx) * 0.18;
       cy += (y - cy) * 0.18;
       el.style.transform = 'translate3d(' + cx + 'px,' + cy + 'px,0)';
+      // La boucle s'arrête dès que le curseur a rattrapé la souris.
+      return shown && (Math.abs(x - cx) > 0.2 || Math.abs(y - cy) > 0.2);
     };
   }
 
@@ -335,10 +337,11 @@
     window.addEventListener('load', function () { layout(); measure(); });
 
     return function tick() {
-      if (window.innerWidth <= 900 || reduceMotion || distance === 0) return;
+      if (window.innerWidth <= 900 || reduceMotion || distance === 0) return false;
       measure();
       current += (progress - current) * 0.12;
       track.style.transform = 'translate3d(' + (-current * distance) + 'px,0,0)';
+      return Math.abs(progress - current) > 0.0005;
     };
   }
 
@@ -352,6 +355,7 @@
     return function tick() {
       value += (target - value) * 0.08;
       stage.style.transform = 'rotate(' + (value * 26) + 'deg) scale(' + (1 - value * 0.08) + ')';
+      return Math.abs(target - value) > 0.001;
     };
   }
 
@@ -470,6 +474,25 @@
     });
   }
 
+  /* ---------------------------------------------------------------- 13. Sobriété : rien ne tourne sans raison */
+  function sobriete() {
+    // Verrou 1 : onglet en arrière-plan → tout se met en pause
+    function appliquerVisibilite() {
+      root.classList.toggle('onglet-cache', document.hidden);
+    }
+    document.addEventListener('visibilitychange', appliquerVisibilite);
+    appliquerVisibilite();
+
+    // Verrou 2 : section hors écran → elle seule se met en pause
+    if (!('IntersectionObserver' in window)) return;
+    var io = new IntersectionObserver(function (entrees) {
+      entrees.forEach(function (entree) {
+        entree.target.classList.toggle('hors-ecran', !entree.isIntersecting);
+      });
+    }, { rootMargin: '25% 0px 25% 0px' });
+    $$('section, .band').forEach(function (el) { io.observe(el); });
+  }
+
   /* ---------------------------------------------------------------- Démarrage */
   function boot() {
     splitText();
@@ -487,14 +510,31 @@
     var railTick = rail();     if (railTick) tickers.push(railTick);
     var cubeTick = cubeTilt(); if (cubeTick) tickers.push(cubeTick);
 
-    if (tickers.length) {
-      (function loop() {
-        for (var i = 0; i < tickers.length; i++) { try { tickers[i](); } catch (err) { /* isolé */ } }
-        requestAnimationFrame(loop);
-      })();
+    // La boucle ne tourne que tant qu'un mouvement est en cours, puis s'arrête.
+    // Sans cela, elle consommait un rappel par image, indéfiniment, même à l'arrêt.
+    if (tickers.length && !reduceMotion) {
+      var enMarche = false;
+      var boucle = function () {
+        var encore = false;
+        for (var i = 0; i < tickers.length; i++) {
+          try { if (tickers[i]() === true) encore = true; } catch (err) { /* isolé */ }
+        }
+        if (encore && !document.hidden) { requestAnimationFrame(boucle); } else { enMarche = false; }
+      };
+      var relancer = function () {
+        if (enMarche || document.hidden) return;
+        enMarche = true;
+        requestAnimationFrame(boucle);
+      };
+      window.addEventListener('scroll', relancer, { passive: true });
+      window.addEventListener('pointermove', relancer, { passive: true });
+      window.addEventListener('resize', relancer);
+      document.addEventListener('visibilitychange', relancer);
+      relancer();
     }
 
     magnetic();
+    sobriete();
   }
 
   if (document.readyState === 'loading') {

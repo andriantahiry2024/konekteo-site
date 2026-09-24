@@ -301,19 +301,13 @@ button, input, select, textarea { font: inherit; color: inherit; }
 /* 4. CHROME --------------------------------------------------------------- */
 .grain {
   position: fixed;
-  inset: -50%;
+  inset: 0;
   z-index: 90;
   pointer-events: none;
   opacity: .035;
+  /* Statique : la version animée coûtait un cœur de processeur en continu
+     pour un décalage que l'œil ne perçoit quasiment pas. */
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E");
-  animation: grainShift 6s steps(6) infinite;
-}
-@keyframes grainShift {
-  0%, 100% { transform: translate(0, 0); }
-  20% { transform: translate(-3%, 2%); }
-  40% { transform: translate(2%, -3%); }
-  60% { transform: translate(-2%, -2%); }
-  80% { transform: translate(3%, 1%); }
 }
 
 .scroll-progress {
@@ -714,9 +708,9 @@ button, input, select, textarea { font: inherit; color: inherit; }
   width: 84px; height: 84px;
   border: 1px solid var(--line);
   border-radius: 50%;
-  background: rgba(13, 14, 17, .7);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+  /* Fond opaque plutôt qu'un flou d'arrière-plan : un backdrop-filter animé
+     se recalcule à chaque image et ne s'arrête jamais. */
+  background: rgba(13, 14, 17, .93);
   font-size: var(--fs-micro);
   letter-spacing: .12em;
   text-transform: uppercase;
@@ -1414,6 +1408,29 @@ button, input, select, textarea { font: inherit; color: inherit; }
 }
 .footer__top:hover { color: var(--gold); }
 .footer__top:hover i { transform: translateX(4px); }
+
+/* 9 bis. SOBRIÉTÉ : RIEN NE TOURNE SANS RAISON ---------------------------- */
+/* Une animation CSS infinie garde le compositeur éveillé indéfiniment, même
+   si personne ne regarde. Deux verrous suffisent à ramener la consommation
+   d'un onglet laissé ouvert à zéro :
+
+     1. l'onglet passe en arrière-plan      → tout se met en pause ;
+     2. la section sort de l'écran          → elle seule se met en pause.
+
+   `animation-play-state` ne se propage pas aux descendants : il faut viser
+   explicitement l'élément et sa descendance. */
+
+html.onglet-cache *,
+html.onglet-cache *::before,
+html.onglet-cache *::after { animation-play-state: paused !important; }
+
+.hors-ecran,
+.hors-ecran *,
+.hors-ecran *::before,
+.hors-ecran *::after { animation-play-state: paused; }
+
+/* La frise et le bandeau n'ont pas besoin de tourner hors de l'écran */
+.hors-ecran .band__track { animation-play-state: paused; }
 
 /* 10. RESPONSIVE & PRÉFÉRENCES ------------------------------------------- */
 @media (hover: hover) and (pointer: fine) {
