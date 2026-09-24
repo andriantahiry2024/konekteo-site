@@ -83,19 +83,61 @@ déjà prévu dans `#formStatus`.
 
 ## Déploiement
 
+### En production : Coolify
+
+Le site tourne sur l'instance Coolify (`206.183.131.21`), projet **Konekteo** / environnement
+**production**.
+
+| Élément | Valeur |
+| --- | --- |
+| Dépôt | `andriantahiry2024/konekteo-site` (branche `main`) |
+| Application Coolify | `konekteo-site` — uuid `scwwebedj7zdr2kzwtsuzhfl` |
+| Type de build | `Dockerfile` (nginx:alpine, aucune compilation) |
+| URL principale | `https://vitrine.konekteo.com` |
+| URL technique | `https://konekteo-vitrine.206.183.131.21.sslip.io` (en `noindex`) |
+
+**Activer l'URL principale.** `konekteo.com` est géré chez LWS et n'a pas de joker DNS : il faut
+créer l'enregistrement pour que le sous-domaine existe.
+
+```
+Type : A      Nom : vitrine      Valeur : 206.183.131.21      TTL : 3600
+```
+
+L'application connaît déjà les deux domaines : dès que l'enregistrement est propagé, Traefik
+obtient le certificat Let's Encrypt seul, sans intervention côté serveur. L'URL technique peut
+alors être retirée de l'application.
+
+**Redéployer** après un commit — aucun webhook n'est branché sur ce dépôt, le déclenchement est
+donc explicite :
+
+```bash
+git push origin main
+curl -X POST "http://206.183.131.21:8000/api/v1/deploy?uuid=scwwebedj7zdr2kzwtsuzhfl" \
+     -H "Authorization: Bearer $COOLIFY_TOKEN"
+```
+
+### Ce que fait la configuration nginx
+
+`nginx.conf` remplace la configuration **principale** de nginx (et non un simple `server` inclus) :
+c'est la seule façon pour que les en-têtes posés au niveau du serveur soient hérités par tous les
+emplacements, nginx cessant de les hériter dès qu'un `location` définit le sien.
+
+- cache `immutable` d'un an sur `/assets/`, 30 jours sur l'icône et le manifeste, revalidation
+  systématique du HTML ;
+- compression gzip (le CSS passe de 43,6 Ko à 9,4 Ko) ;
+- `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`, `Permissions-Policy` ;
+- `application/manifest+json` pour `manifest.webmanifest`, extension que nginx ignore ;
+- seuls les fichiers publics entrent dans l'image : `Dockerfile`, `nginx.conf` et `README.md`
+  ne sont pas servis (vérifié, 404).
+
+### Ailleurs
+
 Le dossier est autonome : déposez-le tel quel chez l'hébergeur.
 
 - **Netlify / Cloudflare Pages / Vercel** : glisser-déposer le dossier, aucune commande de build.
-- **Hébergement classique (FTP, nginx, Apache)** : copiez le contenu à la racine du site.
-- **GitHub Pages** : poussez le dossier sur la branche publiée ; le `.nojekyll` n'est pas nécessaire,
-  aucun fichier ne commence par un souligné.
-
-En-têtes recommandés côté serveur (optionnel) :
-
-```
-Cache-Control: public, max-age=31536000, immutable   # /assets/fonts/*, /assets/img/*
-Cache-Control: public, max-age=3600                  # /*.html, /assets/css/*, /assets/js/*
-```
+- **Hébergement classique (FTP, nginx, Apache)** : copiez le contenu à la racine du site, ou
+  réutilisez `nginx.conf`.
+- **Docker** : `docker build -t konekteo-site . && docker run -p 8080:80 konekteo-site`.
 
 ## Qualité
 
