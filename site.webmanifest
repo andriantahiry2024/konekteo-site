@@ -1,0 +1,18 @@
+{
+  "name": "Konekteo — Sites, applications & automatisations",
+  "short_name": "Konekteo",
+  "description": "Studio de conception : sites web sur mesure, applications mobiles et automatisations métier.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0c",
+  "theme_color": "#0a0a0c",
+  "lang": "fr",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

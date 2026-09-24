@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a0a0c"/>
+      <stop offset="55%" stop-color="#101014"/>
+      <stop offset="100%" stop-color="#16130c"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="78%" cy="18%" r="62%">
+      <stop offset="0%" stop-color="#fbbf24" stop-opacity="0.30"/>
+      <stop offset="100%" stop-color="#fbbf24" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="topFacet" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fde68a"/>
+      <stop offset="100%" stop-color="#fbbf24"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+
+  <!-- cube mark -->
+  <g transform="translate(84 84) scale(1.28)">
+    <polygon points="50,16 82,35 50,54 18,35" fill="url(#topFacet)"/>
+    <polygon points="82,35 82,71 50,90 50,54" fill="#fbbf24" fill-opacity="0.42"/>
+    <polygon points="18,35 50,54 50,90 18,71" fill="#fbbf24" fill-opacity="0.20"/>
+    <polyline points="50,16 82,35 50,54 18,35 50,16" fill="none" stroke="#fde68a" stroke-width="2" stroke-linejoin="round"/>
+    <polyline points="82,35 82,71 50,90 50,54" fill="none" stroke="#fde68a" stroke-width="2" stroke-linejoin="round"/>
+    <polyline points="18,35 18,71 50,90" fill="none" stroke="#fde68a" stroke-width="2" stroke-linejoin="round"/>
+  </g>
+  <text x="216" y="152" font-family="Helvetica, Arial, sans-serif" font-size="52" font-weight="700" letter-spacing="6" fill="#f5f5f4">KONEKTEO</text>
+
+  <text x="84" y="392" font-family="Helvetica, Arial, sans-serif" font-size="96" font-weight="700" fill="#f5f5f4">Sites, applications</text>
+  <text x="84" y="496" font-family="Helvetica, Arial, sans-serif" font-size="96" font-weight="700" fill="#fbbf24">&#38; automatisations</text>
+
+  <text x="88" y="566" font-family="Helvetica, Arial, sans-serif" font-size="27" fill="#a1a1aa">Conception sur mesure &#183; De l&#8217;id&#233;e au lancement &#183; konekteo.com</text>
+
+  <rect x="84" y="200" width="120" height="4" fill="#fbbf24"/>
+</svg>

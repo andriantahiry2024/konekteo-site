@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="fr" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Konekteo — Création de sites web, applications mobiles &amp; automatisations</title>
+<meta name="description" content="Studio de conception sur mesure : sites web qui convertissent, applications mobiles iOS/Android et automatisations métier. Un seul interlocuteur, de la stratégie au code, jusqu'à la mise en ligne.">
+<meta name="theme-color" content="#0a0a0c">
+<meta name="author" content="Konekteo">
+<link rel="canonical" href="https://konekteo.com/">
+
+<!-- Partage social -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Konekteo">
+<meta property="og:url" content="https://konekteo.com/">
+<meta property="og:title" content="Konekteo — Sites, applications &amp; automatisations">
+<meta property="og:description" content="Votre présence en ligne, conçue pour convertir. Design, développement et automatisation sur mesure.">
+<meta property="og:image" content="https://konekteo.com/assets/img/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Konekteo — Sites, applications &amp; automatisations">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Konekteo — Sites, applications &amp; automatisations">
+<meta name="twitter:description" content="Votre présence en ligne, conçue pour convertir.">
+<meta name="twitter:image" content="https://konekteo.com/assets/img/og.png">
+
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="favicon.svg">
+<link rel="manifest" href="site.webmanifest">
+
+<!-- Polices auto-hébergées : aucun appel à un CDN tiers -->
+<link rel="preload" href="assets/fonts/bricolage-grotesque-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/inter-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/fonts/fonts.css">
+<link rel="stylesheet" href="assets/css/main.css">
+
+<script>document.documentElement.className = 'js';</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Konekteo",
+  "url": "https://konekteo.com/",
+  "image": "https://konekteo.com/assets/img/og.png",
+  "description": "Studio de conception de sites web, d'applications mobiles et d'automatisations métier.",
+  "email": "contact@konekteo.com",
+  "priceRange": "Sur devis",
+  "areaServed": { "@type": "Place", "name": "Monde entier (à distance)" },
+  "availableLanguage": ["fr", "en"],
+  "knowsAbout": ["Création de site web", "Application mobile", "Automatisation", "UI/UX design", "Intégration API"],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Services Konekteo",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Conception de sites & plateformes web" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Applications mobiles iOS & Android" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Automatisations métier & intégrations" } }
+    ]
+  }
+}
+</script>
+</head>
+
+<body>
+
+<a class="skip-link" href="#contenu">Aller au contenu</a>
+
+<!-- Voile de chargement -->
+<div class="preloader" id="preloader" aria-hidden="true">
+  <div class="preloader__inner">
+    <span class="preloader__mark" aria-hidden="true">
+      <svg viewBox="0 0 100 100" focusable="false"><polygon points="50,16 82,35 50,54 18,35"/><polygon points="82,35 82,71 50,90 50,54" opacity=".55"/><polygon points="18,35 50,54 50,90 18,71" opacity=".28"/></svg>
+    </span>
+    <span class="preloader__count" id="preloaderCount">0</span>
+  </div>
+  <div class="preloader__bar"><span id="preloaderBar"></span></div>
+</div>
+
+<div class="grain" aria-hidden="true"></div>
+<div class="scroll-progress" aria-hidden="true"><span id="scrollBar"></span></div>
+
+<!-- Curseur personnalisé (pointeur fin uniquement) -->
+<div class="cursor" id="cursor" aria-hidden="true"><span class="cursor__label" id="cursorLabel"></span></div>
+
+<header class="header" id="header">
+  <div class="shell header__inner">
+    <a class="brand" href="#hero" aria-label="Konekteo — retour en haut">
+      <span class="brand__mark" aria-hidden="true">
+        <svg viewBox="0 0 100 100" focusable="false"><polygon points="50,16 82,35 50,54 18,35"/><polygon points="82,35 82,71 50,90 50,54" opacity=".55"/><polygon points="18,35 50,54 50,90 18,71" opacity=".28"/></svg>
+      </span>
+      <span class="brand__name">Konekteo</span>
+    </a>
+
+    <nav class="nav" aria-label="Navigation principale">
+      <ul class="nav__list">
+        <li><a href="#services" data-nav>Services</a></li>
+        <li><a href="#methode" data-nav>Méthode</a></li>
+        <li><a href="#realisations" data-nav>Réalisations</a></li>
+        <li><a href="#formules" data-nav>Formules</a></li>
+        <li><a href="#faq" data-nav>FAQ</a></li>
+      </ul>
+    </nav>
+
+    <div class="header__actions">
+      <a class="btn btn--gold btn--sm" href="#contact" data-magnetic>
+        <span>Démarrer un projet</span>
+        <svg class="btn__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Ouvrir le menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Menu plein écran (mobile / tablette) -->
+<div class="menu" id="menu" hidden>
+  <nav class="menu__nav" aria-label="Navigation mobile">
+    <ul>
+      <li><a href="#services" data-menu-link><span class="menu__num">01</span> Services</a></li>
+      <li><a href="#methode" data-menu-link><span class="menu__num">02</span> Méthode</a></li>
+      <li><a href="#realisations" data-menu-link><span class="menu__num">03</span> Réalisations</a></li>
+      <li><a href="#formules" data-menu-link><span class="menu__num">04</span> Formules</a></li>
+      <li><a href="#faq" data-menu-link><span class="menu__num">05</span> FAQ</a></li>
+      <li><a href="#contact" data-menu-link><span class="menu__num">06</span> Contact</a></li>
+    </ul>
+  </nav>
+  <div class="menu__foot">
+    <a href="mailto:contact@konekteo.com">contact@konekteo.com</a>
+    <p>Sites · Applications · Automatisations</p>
+  </div>
+</div>
+
+<main id="contenu">
+
+  <!-- ============================ HERO ============================ -->
+  <section class="hero" id="hero">
+    <div class="hero__glow" aria-hidden="true"></div>
+
+    <div class="shell hero__grid">
+      <div class="hero__copy">
+        <p class="eyebrow" data-reveal="fade">
+          <span class="dot" aria-hidden="true"></span>
+          Studio de conception — Sites · Applications · Automatisations
+        </p>
+
+        <h1 class="hero__title" data-split data-split-delay="60">
+          Votre présence en ligne, conçue pour convertir.
+        </h1>
+
+        <p class="hero__lead" data-reveal="fade" data-delay="1">
+          Je conçois des <strong>sites web</strong>, des <strong>applications mobiles</strong> et des
+          <strong>automatisations</strong> qui font gagner du temps et des clients. Stratégie, design et
+          développement : un seul interlocuteur, du premier croquis à la mise en ligne.
+        </p>
+
+        <div class="hero__cta" data-reveal="fade" data-delay="2">
+          <a class="btn btn--gold" href="#contact" data-magnetic data-cursor="Écrire">
+            <span>Démarrer un projet</span>
+            <svg class="btn__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a class="btn btn--ghost" href="#realisations" data-magnetic data-cursor="Voir">
+            <span>Voir les réalisations</span>
+          </a>
+        </div>
+
+        <dl class="hero__facts" data-reveal="fade" data-delay="3">
+          <div><dt>Réponse</dt><dd>sous 24 h</dd></div>
+          <div><dt>Devis</dt><dd>fixe &amp; détaillé</dd></div>
+          <div><dt>Code</dt><dd>100 % à vous</dd></div>
+        </dl>
+      </div>
+
+      <div class="hero__visual" data-reveal="fade" data-delay="2" aria-hidden="true">
+        <div class="stage" id="stage">
+          <div class="cube">
+            <span class="cube__face cube__face--top"></span>
+            <span class="cube__face cube__face--left"></span>
+            <span class="cube__face cube__face--right"></span>
+          </div>
+          <span class="orbit orbit--1"><i>Web</i></span>
+          <span class="orbit orbit--2"><i>Mobile</i></span>
+          <span class="orbit orbit--3"><i>Auto</i></span>
+        </div>
+        <p class="hero__visual-note">Trois expertises, une seule équipe.</p>
+      </div>
+    </div>
+
+    <a class="hero__scroll" href="#services" data-cursor="Défiler">
+      <span>Défiler</span>
+      <i aria-hidden="true"></i>
+    </a>
+  </section>
+
+  <!-- ============================ BANDEAU ============================ -->
+  <div class="band" aria-hidden="true">
+    <div class="band__track" data-marquee>
+      <span>Sites web</span><i>✦</i><span>Applications mobiles</span><i>✦</i><span>Automatisations</span><i>✦</i>
+      <span>E-commerce</span><i>✦</i><span>UI / UX design</span><i>✦</i><span>API &amp; intégrations</span><i>✦</i>
+      <span>Sites web</span><i>✦</i><span>Applications mobiles</span><i>✦</i><span>Automatisations</span><i>✦</i>
+      <span>E-commerce</span><i>✦</i><span>UI / UX design</span><i>✦</i><span>API &amp; intégrations</span><i>✦</i>
+    </div>
+  </div>
+
+  <!-- ============================ SERVICES ============================ -->
+  <section class="section services" id="services">
+    <div class="shell">
+      <header class="section__head">
+        <p class="eyebrow" data-reveal="fade"><span class="num">01</span> Services</p>
+        <h2 class="section__title" data-split>Trois façons de faire grandir votre activité.</h2>
+        <p class="section__lead" data-reveal="fade" data-delay="1">
+          Chaque projet part de votre objectif — vendre, recruter, gagner du temps — et non d'un modèle préfabriqué.
+        </p>
+      </header>
+
+      <div class="services__list">
+        <article class="service" data-service data-reveal="fade">
+          <div class="service__head">
+            <span class="service__num">01</span>
+            <h3 class="service__title">Sites &amp; plateformes web</h3>
+            <p class="service__tag">Vitrine · E-commerce · SaaS</p>
+            <button class="service__toggle" type="button" aria-expanded="false" aria-controls="svc-web"><span class="sr-only">Afficher le détail : Sites &amp; plateformes web</span><i aria-hidden="true"></i><i aria-hidden="true"></i></button>
+          </div>
+          <div class="service__body" id="svc-web">
+            <div class="service__inner">
+              <p class="service__text">
+                Un site rapide, lisible et pensé pour convertir : structure claire, textes qui parlent à vos clients,
+                parcours sans friction. Idéal pour une vitrine qui inspire confiance, une boutique en ligne ou une
+                plateforme métier sur mesure.
+              </p>
+              <ul class="ticks">
+                <li>Design sur mesure, charte graphique complète</li>
+                <li>Développement performant (Next.js / Astro / WordPress)</li>
+                <li>Rédaction assistée et optimisation SEO technique</li>
+                <li>Espace d'administration simple pour vos contenus</li>
+                <li>Mesure d'audience respectueuse de la vie privée</li>
+              </ul>
+              <p class="service__meta"><span>Délai courant</span> 2 à 6 semaines</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="service" data-service data-reveal="fade" data-delay="1">
+          <div class="service__head">
+            <span class="service__num">02</span>
+            <h3 class="service__title">Applications mobiles</h3>
+            <p class="service__tag">iOS · Android · PWA</p>
+            <button class="service__toggle" type="button" aria-expanded="false" aria-controls="svc-mobile"><span class="sr-only">Afficher le détail : Applications mobiles</span><i aria-hidden="true"></i><i aria-hidden="true"></i></button>
+          </div>
+          <div class="service__body" id="svc-mobile">
+            <div class="service__inner">
+              <p class="service__text">
+                Une application que vos utilisateurs gardent sur leur écran d'accueil : fluide, hors-ligne quand il
+                faut, et connectée à vos outils. Je gère aussi la publication sur les stores et les mises à jour.
+              </p>
+              <ul class="ticks">
+                <li>Prototype cliquable avant la première ligne de code</li>
+                <li>Une base de code pour iOS et Android (React Native / Capacitor)</li>
+                <li>Notifications, paiement, comptes et synchronisation</li>
+                <li>Publication App Store &amp; Google Play accompagnée</li>
+                <li>Back-office pour piloter le contenu et les utilisateurs</li>
+              </ul>
+              <p class="service__meta"><span>Délai courant</span> 4 à 10 semaines</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="service" data-service data-reveal="fade" data-delay="2">
+          <div class="service__head">
+            <span class="service__num">03</span>
+            <h3 class="service__title">Automatisations &amp; IA</h3>
+            <p class="service__tag">Process · Intégrations · Chatbots</p>
+            <button class="service__toggle" type="button" aria-expanded="false" aria-controls="svc-auto"><span class="sr-only">Afficher le détail : Automatisations &amp; IA</span><i aria-hidden="true"></i><i aria-hidden="true"></i></button>
+          </div>
+          <div class="service__body" id="svc-auto">
+            <div class="service__inner">
+              <p class="service__text">
+                Vos outils ne se parlent pas, et vos équipes recopient les mêmes informations dix fois par jour.
+                Je relie tout cela : devis, factures, relances, messagerie, tableaux de bord — sans embaucher.
+              </p>
+              <ul class="ticks">
+                <li>Connexion de vos outils existants (CRM, tableur, e-mail, WhatsApp)</li>
+                <li>Rapports et relances automatiques, zéro copier-coller</li>
+                <li>Chatbot de qualification et réponse aux questions fréquentes</li>
+                <li>Tableau de bord unique pour suivre l'activité en temps réel</li>
+                <li>Documentation et passation pour rester autonome</li>
+              </ul>
+              <p class="service__meta"><span>Délai courant</span> 1 à 3 semaines</p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ MANIFESTE ============================ -->
+  <section class="section manifesto" id="manifeste">
+    <div class="shell">
+      <p class="eyebrow eyebrow--dark" data-reveal="fade">Ma façon de travailler</p>
+      <p class="manifesto__text" data-split data-split-delay="26">
+        Un beau site qui ne rapporte rien est une dépense. Je conçois des outils utiles,
+        rapides et durables — et je m'engage sur le résultat, pas sur des effets.
+      </p>
+
+      <div class="pillars">
+        <div class="pillar" data-reveal="fade">
+          <span class="pillar__num">01</span>
+          <h3>Un seul interlocuteur</h3>
+          <p>Vous parlez directement à la personne qui dessine et qui code. Pas de téléphone arabe, pas de délai perdu.</p>
+        </div>
+        <div class="pillar" data-reveal="fade" data-delay="1">
+          <span class="pillar__num">02</span>
+          <h3>Le design au service de l'usage</h3>
+          <p>Chaque animation, chaque couleur, chaque mot a une raison d'être. L'élégance vient de la clarté.</p>
+        </div>
+        <div class="pillar" data-reveal="fade" data-delay="2">
+          <span class="pillar__num">03</span>
+          <h3>Vous restez propriétaire</h3>
+          <p>Code, contenus, accès, hébergement : tout est à votre nom, documenté et transmissible à tout moment.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ MÉTHODE ============================ -->
+  <section class="section process" id="methode">
+    <div class="shell section__head">
+      <p class="eyebrow" data-reveal="fade"><span class="num">02</span> Méthode</p>
+      <h2 class="section__title" data-split>Cinq étapes, aucune zone d'ombre.</h2>
+      <p class="section__lead" data-reveal="fade" data-delay="1">
+        Vous savez toujours où en est le projet, ce qui est attendu de vous, et ce qui arrive ensuite.
+      </p>
+    </div>
+
+    <div class="rail" id="rail">
+      <div class="rail__viewport">
+        <div class="rail__track" id="railTrack">
+          <article class="step">
+            <span class="step__num">01</span>
+            <h3 class="step__title">Cadrage</h3>
+            <p class="step__time">30 min · offert</p>
+            <p class="step__text">On clarifie votre objectif, votre cible et vos contraintes. Vous repartez avec une recommandation écrite, même si l'on ne travaille pas ensemble.</p>
+          </article>
+          <article class="step">
+            <span class="step__num">02</span>
+            <h3 class="step__title">Architecture &amp; design</h3>
+            <p class="step__time">3 à 7 jours</p>
+            <p class="step__text">Arborescence, parcours, maquettes des écrans clés. Vous validez le rendu réel avant le développement — pas de surprise à la livraison.</p>
+          </article>
+          <article class="step">
+            <span class="step__num">03</span>
+            <h3 class="step__title">Développement</h3>
+            <p class="step__time">1 à 6 semaines</p>
+            <p class="step__text">Intégration soignée, code lisible, performances mesurées. Vous suivez l'avancement sur un lien de préproduction mis à jour en continu.</p>
+          </article>
+          <article class="step">
+            <span class="step__num">04</span>
+            <h3 class="step__title">Tests &amp; mise en ligne</h3>
+            <p class="step__time">2 à 4 jours</p>
+            <p class="step__text">Test sur téléphone, tablette et ordinateur, vitesse, accessibilité, référencement. Mise en ligne accompagnée, domaine et e-mails configurés.</p>
+          </article>
+          <article class="step">
+            <span class="step__num">05</span>
+            <h3 class="step__title">Suivi</h3>
+            <p class="step__time">30 jours inclus</p>
+            <p class="step__text">Corrections, ajustements et formation à votre espace d'administration. Ensuite, maintenance légère ou évolutions, à la demande.</p>
+          </article>
+        </div>
+      </div>
+      <div class="rail__bar" aria-hidden="true"><span id="railBar"></span></div>
+      <p class="rail__hint" aria-hidden="true">Faites défiler <i></i></p>
+    </div>
+  </section>
+
+  <!-- ============================ RÉALISATIONS ============================ -->
+  <section class="section work" id="realisations">
+    <div class="shell">
+      <header class="section__head section__head--row">
+        <div>
+          <p class="eyebrow" data-reveal="fade"><span class="num">03</span> Réalisations</p>
+          <h2 class="section__title" data-split>Des produits conçus, développés et maintenus.</h2>
+        </div>
+        <p class="section__lead" data-reveal="fade" data-delay="1">
+          Une sélection de projets menés de bout en bout — application, plateforme, automatisation, supervision.
+        </p>
+      </header>
+
+      <div class="cases">
+        <article class="case" data-reveal="fade" data-cursor="Voir">
+          <div class="case__visual case__visual--app" aria-hidden="true">
+            <span class="mock mock--phone">
+              <i class="mock__bar"></i><i class="mock__row"></i><i class="mock__row mock__row--short"></i>
+              <i class="mock__tile"></i><i class="mock__tile mock__tile--2"></i>
+            </span>
+            <span class="mock mock--phone mock--phone-2">
+              <i class="mock__bar"></i><i class="mock__row"></i><i class="mock__row mock__row--short"></i>
+            </span>
+          </div>
+          <div class="case__body">
+            <p class="case__tag">Application mobile</p>
+            <h3 class="case__title">Konekteo Mobile</h3>
+            <p class="case__text">Application compagnon multi-services : catalogue, comptes utilisateurs, notifications et synchronisation hors-ligne. Base unique iOS / Android, publication Android via Capacitor.</p>
+            <ul class="pills"><li>Capacitor</li><li>TypeScript</li><li>API REST</li><li>Android</li></ul>
+          </div>
+        </article>
+
+        <article class="case" data-reveal="fade" data-delay="1" data-cursor="Voir">
+          <div class="case__visual case__visual--web" aria-hidden="true">
+            <span class="mock mock--window">
+              <i class="mock__chrome"></i>
+              <span class="mock__grid"><i></i><i></i><i></i><i></i><i></i><i></i></span>
+            </span>
+          </div>
+          <div class="case__body">
+            <p class="case__tag">Plateforme web</p>
+            <h3 class="case__title">Lead Gen</h3>
+            <p class="case__text">Plateforme de prospection : constitution de bases qualifiées, nettoyage de données, suivi commercial et export. Interface d'administration complète et rôles utilisateurs.</p>
+            <ul class="pills"><li>React</li><li>Supabase</li><li>Data</li><li>Admin</li></ul>
+          </div>
+        </article>
+
+        <article class="case" data-reveal="fade" data-delay="2" data-cursor="Voir">
+          <div class="case__visual case__visual--bot" aria-hidden="true">
+            <span class="mock mock--chat">
+              <i class="mock__bubble"></i>
+              <i class="mock__bubble mock__bubble--out"></i>
+              <i class="mock__bubble mock__bubble--short"></i>
+              <i class="mock__bubble mock__bubble--out"></i>
+            </span>
+          </div>
+          <div class="case__body">
+            <p class="case__tag">Automatisation &amp; IA</p>
+            <h3 class="case__title">Messenger Bot</h3>
+            <p class="case__text">Assistant conversationnel connecté à une base de connaissances : réponse aux questions fréquentes, qualification des demandes et transfert vers un humain au bon moment.</p>
+            <ul class="pills"><li>Webhooks</li><li>IA</li><li>Base de connaissances</li></ul>
+          </div>
+        </article>
+
+        <article class="case" data-reveal="fade" data-delay="3" data-cursor="Voir">
+          <div class="case__visual case__visual--ops" aria-hidden="true">
+            <span class="mock mock--dash">
+              <i class="mock__spark"></i>
+              <span class="mock__gauges"><i></i><i></i><i></i></span>
+            </span>
+          </div>
+          <div class="case__body">
+            <p class="case__tag">Supervision</p>
+            <h3 class="case__title">Serveur Monitor</h3>
+            <p class="case__text">Supervision d'infrastructure : disponibilité des services, ressources, historiques et alertes immédiates en cas d'incident. Déployé en conteneur, accessible à distance.</p>
+            <ul class="pills"><li>Docker</li><li>Temps réel</li><li>Alertes</li></ul>
+          </div>
+        </article>
+      </div>
+
+      <p class="work__note" data-reveal="fade">
+        Chaque projet est unique : les périmètres ci-dessus donnent une idée du type de travail, pas un catalogue figé.
+        <a href="#contact" data-cursor="Écrire">Vous avez un projet similaire ?</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================ CHIFFRES / ENGAGEMENTS ============================ -->
+  <section class="section numbers" id="engagements">
+    <div class="shell">
+      <header class="section__head">
+        <p class="eyebrow" data-reveal="fade"><span class="num">04</span> Engagements</p>
+        <h2 class="section__title" data-split>Ce sur quoi je m'engage, noir sur blanc.</h2>
+      </header>
+      <div class="numbers__grid">
+        <div class="number" data-reveal="fade">
+          <p class="number__value"><span data-count="3">3</span></p>
+          <p class="number__label">expertises réunies<br>web · mobile · automatisation</p>
+        </div>
+        <div class="number" data-reveal="fade" data-delay="1">
+          <p class="number__value"><span data-count="24">24</span><small>h</small></p>
+          <p class="number__label">pour une première réponse,<br>jours ouvrés</p>
+        </div>
+        <div class="number" data-reveal="fade" data-delay="2">
+          <p class="number__value"><span data-count="100">100</span><small>%</small></p>
+          <p class="number__label">du code et des accès<br>vous appartiennent</p>
+        </div>
+        <div class="number" data-reveal="fade" data-delay="3">
+          <p class="number__value"><span data-count="30">30</span><small>j</small></p>
+          <p class="number__label">de suivi inclus après<br>la mise en ligne</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ FORMULES ============================ -->
+  <section class="section plans" id="formules">
+    <div class="shell">
+      <header class="section__head">
+        <p class="eyebrow" data-reveal="fade"><span class="num">05</span> Formules</p>
+        <h2 class="section__title" data-split>Un cadre clair, un devis fixe.</h2>
+        <p class="section__lead" data-reveal="fade" data-delay="1">
+          Les formules ci-dessous décrivent le périmètre. Le montant est annoncé après le cadrage, puis il ne bouge plus.
+        </p>
+      </header>
+
+      <div class="plans__grid">
+        <article class="plan" data-reveal="fade">
+          <header>
+            <h3>Présence</h3>
+            <p class="plan__for">Pour exister en ligne et inspirer confiance.</p>
+          </header>
+          <ul class="ticks">
+            <li>Site vitrine 1 à 5 pages</li>
+            <li>Design sur mesure, version mobile</li>
+            <li>Formulaires de contact et prise de rendez-vous</li>
+            <li>SEO de base et fiche Google</li>
+            <li>Mise en ligne et 30 jours de suivi</li>
+          </ul>
+          <p class="plan__foot">Délai indicatif : 2 à 3 semaines</p>
+          <a class="btn btn--ghost btn--wide" href="#contact" data-magnetic data-cursor="Écrire">Demander un devis</a>
+        </article>
+
+        <article class="plan plan--featured" data-reveal="fade" data-delay="1">
+          <span class="plan__badge">Le plus demandé</span>
+          <header>
+            <h3>Sur mesure</h3>
+            <p class="plan__for">Pour vendre, gérer ou automatiser votre activité.</p>
+          </header>
+          <ul class="ticks">
+            <li>Plateforme web ou application mobile</li>
+            <li>Comptes utilisateurs, paiement, back-office</li>
+            <li>Connexion à vos outils existants</li>
+            <li>Design system réutilisable</li>
+            <li>Suivi, formation et documentation</li>
+          </ul>
+          <p class="plan__foot">Délai indicatif : 4 à 10 semaines</p>
+          <a class="btn btn--gold btn--wide" href="#contact" data-magnetic data-cursor="Écrire">Parlons-en</a>
+        </article>
+
+        <article class="plan" data-reveal="fade" data-delay="2">
+          <header>
+            <h3>Automatisation</h3>
+            <p class="plan__for">Pour supprimer les tâches répétitives.</p>
+          </header>
+          <ul class="ticks">
+            <li>Audit des tâches à automatiser</li>
+            <li>Connexion de vos outils et de vos données</li>
+            <li>Relances, rapports et notifications automatiques</li>
+            <li>Chatbot de première réponse</li>
+            <li>Passation et documentation d'usage</li>
+          </ul>
+          <p class="plan__foot">Délai indicatif : 1 à 3 semaines</p>
+          <a class="btn btn--ghost btn--wide" href="#contact" data-magnetic data-cursor="Écrire">Demander un audit</a>
+        </article>
+      </div>
+
+      <p class="plans__note" data-reveal="fade">
+        Paiement en deux ou trois fois possible · Hébergement et nom de domaine à votre nom · Devis détaillé avant tout démarrage.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================ FAQ ============================ -->
+  <section class="section faq" id="faq">
+    <div class="shell faq__grid">
+      <header class="faq__head">
+        <p class="eyebrow" data-reveal="fade"><span class="num">06</span> FAQ</p>
+        <h2 class="section__title" data-split>Les questions qui reviennent.</h2>
+        <p class="section__lead" data-reveal="fade" data-delay="1">
+          Une question qui n'est pas là ? <a href="#contact" data-cursor="Écrire">Écrivez-moi</a>, la réponse arrive sous 24 h.
+        </p>
+      </header>
+
+      <div class="faq__list">
+        <details class="qa" data-reveal="fade" name="faq">
+          <summary><span>Combien coûte un projet ?</span><i aria-hidden="true"></i></summary>
+          <div class="qa__body"><p>Le tarif dépend du périmètre, jamais du nombre de pages. Après un appel de cadrage de 30 minutes, vous recevez un devis fixe et détaillé : ce qui est inclus, ce qui ne l'est pas, et le calendrier. Aucun frais caché, aucune facturation à l'heure surprise.</p></div>
+        </details>
+
+        <details class="qa" data-reveal="fade" data-delay="1" name="faq">
+          <summary><span>Combien de temps avant la mise en ligne ?</span><i aria-hidden="true"></i></summary>
+          <div class="qa__body"><p>Comptez 2 à 3 semaines pour un site vitrine, 4 à 10 semaines pour une plateforme ou une application. Le délai est confirmé au devis et dépend surtout de la rapidité des validations de votre côté : je fournis toujours une liste claire de ce que j'attends de vous, et quand.</p></div>
+        </details>
+
+        <details class="qa" data-reveal="fade" data-delay="2" name="faq">
+          <summary><span>Je n'ai ni textes ni logo. C'est bloquant ?</span><i aria-hidden="true"></i></summary>
+          <div class="qa__body"><p>Non. Je peux partir de vos supports existants, structurer vos textes avec vous et créer une identité simple (logo, couleurs, typographies). Si vous préférez confier la rédaction ou l'illustration à d'autres, je m'adapte et je coordonne.</p></div>
+        </details>
+
+        <details class="qa" data-reveal="fade" data-delay="3" name="faq">
+          <summary><span>Et après la mise en ligne, il se passe quoi ?</span><i aria-hidden="true"></i></summary>
+          <div class="qa__body"><p>30 jours de suivi sont inclus : corrections, ajustements et formation à votre espace d'administration. Ensuite, vous êtes libre : maintenance légère, évolutions ponctuelles, ou autonomie totale — le code et la documentation vous appartiennent.</p></div>
+        </details>
+
+        <details class="qa" data-reveal="fade" name="faq">
+          <summary><span>On peut travailler à distance ?</span><i aria-hidden="true"></i></summary>
+          <div class="qa__body"><p>Oui, et c'est même le mode par défaut : visioconférence pour le cadrage, lien de préproduction mis à jour en continu, échanges écrits récapitulés. Vous voyez le projet avancer en temps réel, où que vous soyez.</p></div>
+        </details>
+
+        <details class="qa" data-reveal="fade" data-delay="1" name="faq">
+          <summary><span>Pourrai-je modifier mon site moi-même ?</span><i aria-hidden="true"></i></summary>
+          <div class="qa__body"><p>Oui. Chaque projet est livré avec un espace d'administration pensé pour un non-technicien : modifier un texte, une photo, un produit ou un tarif se fait sans toucher au code. Une session de formation est incluse et enregistrée.</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ CONTACT ============================ -->
+  <section class="section contact" id="contact">
+    <div class="shell contact__grid">
+      <div class="contact__intro">
+        <p class="eyebrow" data-reveal="fade"><span class="num">07</span> Contact</p>
+        <h2 class="contact__title" data-split>Parlons de votre projet.</h2>
+        <p class="contact__lead" data-reveal="fade" data-delay="1">
+          Décrivez votre besoin en quelques lignes. Je vous réponds sous 24 h ouvrées avec une première
+          lecture de votre situation et, si c'est pertinent, une proposition de rendez-vous de 30 minutes.
+        </p>
+
+        <ul class="contact__list" data-reveal="fade" data-delay="2">
+          <li>
+            <span class="contact__label">E-mail</span>
+            <a href="mailto:contact@konekteo.com" data-cursor="Écrire">contact@konekteo.com</a>
+          </li>
+          <li>
+            <span class="contact__label">WhatsApp</span>
+            <a href="https://wa.me/261340000000" target="_blank" rel="noopener" data-cursor="Ouvrir">+261 34 00 000 00</a>
+          </li>
+          <li>
+            <span class="contact__label">Site</span>
+            <a href="https://konekteo.com" data-cursor="Ouvrir">konekteo.com</a>
+          </li>
+          <li>
+            <span class="contact__label">Zone</span>
+            <span>À distance, partout — <span id="clock">--:--</span> chez vous</span>
+          </li>
+        </ul>
+      </div>
+
+      <form class="form" id="projectForm" data-reveal="fade" data-delay="1" novalidate>
+        <div class="field">
+          <label for="f-nom">Votre nom <span aria-hidden="true">*</span></label>
+          <input id="f-nom" name="nom" type="text" autocomplete="name" required placeholder="Prénom et nom">
+        </div>
+        <div class="field">
+          <label for="f-email">Votre e-mail <span aria-hidden="true">*</span></label>
+          <input id="f-email" name="email" type="email" autocomplete="email" required placeholder="vous@exemple.com">
+        </div>
+        <div class="field field--half">
+          <label for="f-type">Type de projet</label>
+          <select id="f-type" name="type">
+            <option>Site vitrine</option>
+            <option>Boutique en ligne</option>
+            <option>Plateforme / SaaS</option>
+            <option>Application mobile</option>
+            <option>Automatisation</option>
+            <option>Je ne sais pas encore</option>
+          </select>
+        </div>
+        <div class="field field--half">
+          <label for="f-budget">Budget envisagé</label>
+          <select id="f-budget" name="budget">
+            <option>À définir ensemble</option>
+            <option>Moins de 1 000 €</option>
+            <option>1 000 – 3 000 €</option>
+            <option>3 000 – 8 000 €</option>
+            <option>Plus de 8 000 €</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="f-msg">Votre projet <span aria-hidden="true">*</span></label>
+          <textarea id="f-msg" name="message" rows="5" required placeholder="Objectif, échéance, ce qui existe déjà…"></textarea>
+        </div>
+        <p class="form__error" id="formError" role="alert" hidden></p>
+        <p class="form__status" id="formStatus" role="status" aria-live="polite"></p>
+        <button class="btn btn--gold btn--wide" type="submit" data-magnetic>
+          <span>Envoyer ma demande</span>
+          <svg class="btn__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <p class="form__legal">Vos informations servent uniquement à vous répondre. Aucun partage, aucune revente.</p>
+      </form>
+    </div>
+  </section>
+
+  <!--
+    Bloc témoignages prêt à l'emploi : à activer UNIQUEMENT avec de vrais retours clients.
+    <section class="section quotes" id="temoignages"> … </section>
+  -->
+
+</main>
+
+<footer class="footer">
+  <div class="shell footer__grid">
+    <div class="footer__brand">
+      <a class="brand brand--lg" href="#hero">
+        <span class="brand__mark" aria-hidden="true">
+          <svg viewBox="0 0 100 100" focusable="false"><polygon points="50,16 82,35 50,54 18,35"/><polygon points="82,35 82,71 50,90 50,54" opacity=".55"/><polygon points="18,35 50,54 50,90 18,71" opacity=".28"/></svg>
+        </span>
+        <span class="brand__name">Konekteo</span>
+      </a>
+      <p>Studio de conception — sites web, applications mobiles et automatisations. Je transforme une idée en outil qui travaille pour vous.</p>
+      <a class="btn btn--ghost btn--sm" href="#contact" data-magnetic data-cursor="Écrire">Démarrer un projet</a>
+    </div>
+
+    <nav class="footer__col" aria-label="Plan du site">
+      <h2>Navigation</h2>
+      <ul>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#methode">Méthode</a></li>
+        <li><a href="#realisations">Réalisations</a></li>
+        <li><a href="#formules">Formules</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </nav>
+
+    <nav class="footer__col" aria-label="Contact">
+      <h2>Contact</h2>
+      <ul>
+        <li><a href="mailto:contact@konekteo.com">contact@konekteo.com</a></li>
+        <li><a href="https://wa.me/261340000000" target="_blank" rel="noopener">WhatsApp</a></li>
+        <li><a href="https://konekteo.com">konekteo.com</a></li>
+      </ul>
+    </nav>
+
+    <div class="footer__col">
+      <h2>Informations</h2>
+      <ul>
+        <li>Réponse sous 24 h ouvrées</li>
+        <li>Devis fixe après cadrage</li>
+        <li>Deux à trois fois sans frais</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="shell footer__bottom">
+    <p>© <span id="year">2026</span> Konekteo. Tous droits réservés.</p>
+    <p class="footer__made">Conçu et développé à la main — pas de modèle tout fait.</p>
+    <a class="footer__top" href="#hero" data-cursor="Haut">Retour en haut <i aria-hidden="true"></i></a>
+  </div>
+</footer>
+
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>
