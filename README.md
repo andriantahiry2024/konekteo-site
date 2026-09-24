@@ -26,8 +26,9 @@ navigateurs qui bloquent `file://` — mieux vaut passer par un petit serveur.
 konekteo-site/
 ├── index.html                  # tout le contenu, en français, commenté par section
 ├── favicon.svg                 # cube Konekteo
-├── site.webmanifest            # installation sur mobile
+├── manifest.webmanifest        # installation sur mobile
 ├── robots.txt · sitemap.xml    # référencement
+├── Dockerfile · nginx.conf     # service en production (nginx + cache + en-têtes)
 └── assets/
     ├── css/main.css            # design system + mise en page + animations
     ├── js/main.js              # interactions, découpé en modules numérotés
@@ -43,7 +44,7 @@ Tout est dans `index.html`, repérable par les commentaires `<!-- ==== SECTION =
 | --- | --- | --- |
 | E-mail | section Contact + pied de page + JSON-LD | `contact@konekteo.com` |
 | WhatsApp | section Contact + pied de page | `+261 34 00 000 00` et `https://wa.me/261340000000` |
-| Nom de domaine | `<link rel="canonical">`, Open Graph, `robots.txt`, `sitemap.xml` | `https://konekteo.com/` |
+| Nom de domaine | `<link rel="canonical">`, Open Graph, `robots.txt`, `sitemap.xml` | `https://vitrine.konekteo.com/` |
 | Ville / zone | section Contact (`Zone`) | « À distance, partout » |
 | Études de cas | section `#realisations` | 4 projets réels ; adaptez les titres et périmètres |
 | Témoignages | bloc commenté en fin de `<main>` | à activer **uniquement** avec de vrais retours clients |
