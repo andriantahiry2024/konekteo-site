@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /und-facture/
 
 Sitemap: https://vitrine.konekteo.com/sitemap.xml

@@ -9,6 +9,9 @@ COPY nginx.conf /etc/nginx/nginx.conf
 COPY index.html favicon.svg manifest.webmanifest robots.txt sitemap.xml /usr/share/nginx/html/
 COPY assets /usr/share/nginx/html/assets
 
+# Espace de téléchargement des factures : page d'historique + PDF, servis sous /und-facture/
+COPY und-facture /usr/share/nginx/html/und-facture
+
 EXPOSE 80
 
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s \

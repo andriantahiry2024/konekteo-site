@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="theme-color" content="#08090b">
+<title>Vos factures — Konekteo</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/fonts/fonts.css">
+<style>
+  :root {
+    --ink: #08090b; --card: #0d0e11; --card-2: #14151a;
+    --line: rgba(255,255,255,.10); --line-2: rgba(255,255,255,.18);
+    --fg: #f5f5f3; --fg-dim: #9d9da5;
+    --gold: #fbbf24; --gold-soft: #fde68a; --vert: #6ee7a8;
+    --font-display: 'Bricolage Grotesque', 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+    --font-body: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+    --font-accent: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--ink); color: var(--fg);
+    font-family: var(--font-body); font-size: 16px; line-height: 1.6;
+    -webkit-font-smoothing: antialiased; min-height: 100vh;
+    display: flex; flex-direction: column;
+  }
+  .page {
+    flex: 1; width: 100%; max-width: 860px; margin: 0 auto;
+    padding: clamp(1.5rem, 4vw, 3rem) clamp(1.1rem, 4vw, 2rem);
+    display: flex; flex-direction: column; gap: clamp(1.4rem, 4vw, 2.2rem);
+  }
+
+  /* --- en-tête --- */
+  .tete { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+  .marque {
+    display: inline-flex; align-items: center; gap: .6rem; color: var(--fg); text-decoration: none;
+    font-family: var(--font-display); font-weight: 700; font-size: 1.2rem;
+    min-height: 44px; padding: .2rem 0;
+  }
+  .marque svg { width: 30px; height: 30px; flex: none; }
+  .marque:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; border-radius: 6px; }
+  .espace {
+    font-size: .72rem; text-transform: uppercase; letter-spacing: .16em;
+    color: var(--fg-dim); border: 1px solid var(--line); border-radius: 999px; padding: .35rem .8rem;
+  }
+
+  /* --- titre --- */
+  .intro h1 {
+    margin: 0 0 .7rem; font-family: var(--font-display);
+    font-size: clamp(1.9rem, 6vw, 2.9rem); line-height: 1.08; letter-spacing: -.02em;
+  }
+  .intro h1 em { font-family: var(--font-accent); font-style: italic; font-weight: 400; color: var(--gold); }
+  .intro p { margin: 0; color: var(--fg-dim); max-width: 62ch; }
+
+  /* --- bilan --- */
+  .bilan {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+    background: var(--line); border: 1px solid var(--line); border-radius: 14px; overflow: hidden;
+  }
+  .bilan div { background: var(--card); padding: 1rem 1.2rem; display: flex; flex-direction: column; gap: .25rem; }
+  .bilan span { font-size: .74rem; text-transform: uppercase; letter-spacing: .1em; color: var(--fg-dim); }
+  .bilan b { font-family: var(--font-display); font-size: clamp(1.15rem, 3.4vw, 1.6rem); font-weight: 700; }
+  .bilan .reste b { color: var(--gold); }
+
+  /* --- liste --- */
+  ul.factures { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .8rem; }
+  .facture {
+    background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+    padding: 1.1rem 1.3rem; display: flex; gap: 1rem 1.5rem; align-items: center;
+    flex-wrap: wrap; justify-content: space-between; transition: border-color .18s ease;
+  }
+  .facture:hover { border-color: var(--line-2); }
+  .f-info { display: flex; flex-direction: column; gap: .25rem; min-width: 15rem; flex: 1; }
+  .f-num { font-family: var(--font-display); font-weight: 700; font-size: 1.05rem; letter-spacing: .01em; }
+  .f-objet { color: var(--fg-dim); font-size: .88rem; }
+  .f-date { color: var(--fg-dim); font-size: .78rem; }
+  .f-action { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+  .f-montant { font-family: var(--font-display); font-weight: 700; font-size: 1.3rem; min-width: 5.5rem; text-align: right; }
+  .badge {
+    font-size: .7rem; text-transform: uppercase; letter-spacing: .1em; font-weight: 700;
+    border-radius: 999px; padding: .32rem .7rem; border: 1px solid var(--line-2); color: var(--fg-dim);
+  }
+  .badge-payee { color: var(--vert); border-color: rgba(110,231,168,.4); background: rgba(110,231,168,.08); }
+  .badge-emise { color: var(--gold); border-color: rgba(251,191,36,.4); background: rgba(251,191,36,.08); }
+  .badge-annulee { color: var(--fg-dim); text-decoration: line-through; }
+  .dl {
+    display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+    min-height: 44px; padding: .6rem 1.1rem; background: var(--gold); color: #101114;
+    font-family: var(--font-display); font-weight: 700; font-size: .9rem;
+    text-decoration: none; border-radius: 10px; white-space: nowrap;
+    transition: background .18s ease;
+  }
+  .dl:hover { background: var(--gold-soft); }
+  .dl:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+  .dl svg { width: 16px; height: 16px; flex: none; }
+
+  .vide {
+    background: var(--card); border: 1px dashed var(--line-2); border-radius: 14px;
+    padding: 2rem 1.5rem; text-align: center; color: var(--fg-dim);
+  }
+
+  /* --- pied --- */
+  .pied {
+    display: flex; flex-wrap: wrap; gap: .4rem 1rem; justify-content: space-between; align-items: center;
+    color: var(--fg-dim); font-size: .8rem; border-top: 1px solid var(--line); padding-top: 1.2rem;
+  }
+  .pied a { color: var(--fg-dim); text-decoration: none; border-bottom: 1px solid var(--line-2); }
+  .pied a:hover, .pied a:focus-visible { color: var(--fg); }
+
+  @media (max-width: 620px) {
+    .bilan { grid-template-columns: 1fr; }
+    .f-action { width: 100%; }
+    .f-montant { text-align: left; }
+    .dl { width: 100%; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="tete">
+    <a class="marque" href="/">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" aria-hidden="true">
+        <rect width="100" height="100" rx="24" fill="#0a0a0c"/>
+        <polygon points="50,16 82,35 50,54 18,35" fill="#fbbf24" fill-opacity="0.85"/>
+        <polygon points="82,35 82,71 50,90 50,54" fill="#fbbf24" fill-opacity="0.45"/>
+        <polygon points="18,35 50,54 50,90 18,71" fill="#fbbf24" fill-opacity="0.22"/>
+        <polyline points="50,16 82,35 50,54 18,35 50,16" fill="none" stroke="#fde68a" stroke-width="2.4" stroke-linejoin="round"/>
+        <polyline points="82,35 82,71 50,90 50,54" fill="none" stroke="#fde68a" stroke-width="2.4" stroke-linejoin="round"/>
+        <polyline points="18,35 18,71 50,90" fill="none" stroke="#fde68a" stroke-width="2.4" stroke-linejoin="round"/>
+        <circle cx="50" cy="54" r="4.2" fill="#0a0a0c"/>
+      </svg>
+      Konekteo
+    </a>
+    <span class="espace">Espace factures — Maskoote</span>
+  </header>
+
+  <section class="intro">
+    <h1>Vos factures,<br><em>au même endroit.</em></h1>
+    <p>Retrouvez ici toutes les factures émises par Konekteo pour le projet UND. Chaque nouvelle facture apparaît sur cette page.</p>
+  </section>
+
+  <section class="bilan" aria-label="Résumé de la facturation">
+    <div><span>Factures émises</span><b>1</b></div>
+    <div><span>Total facturé</span><b>96,50 €</b></div>
+    <div class="reste"><span>Reste à payer</span><b>96,50 €</b></div>
+  </section>
+
+  <main>
+    <ul class="factures">
+      
+      <li class="facture">
+        <div class="f-info">
+          <span class="f-num">KON-2026-001</span>
+          <span class="f-objet">Prestations de développement et de mise en ligne — application UND</span>
+          <span class="f-date">Émise le 2 octobre 2026 — échéance 1er novembre 2026</span>
+        </div>
+        <div class="f-action">
+          <span class="badge badge-emise">Émise</span>
+          <span class="f-montant">96,50 €</span>
+          <a class="dl" href="factures/Facture-KON-2026-001-Maskoote.pdf" download="Facture-KON-2026-001-Maskoote.pdf">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M4 21h16"/>
+            </svg>
+            Télécharger le PDF
+          </a>
+        </div>
+      </li>
+      
+    </ul>
+    
+  </main>
+
+  <footer class="pied">
+    <span>Dernière mise à jour : 2 octobre 2026</span>
+    <span><a href="mailto:contact@konekteo.com">contact@konekteo.com</a></span>
+  </footer>
+
+</div>
+</body>
+</html>
